@@ -44,12 +44,11 @@ def update_clusters(items, assignments, clusters):
 
 
 def parse_arguments():
-    global DEBUG
+    global DEBUG, ROUND_PRECISION
 
     parser = argparse.ArgumentParser(description="Clusters Calculator")
     parser.add_argument('-c', '--clusters', type=int, help='Number of clusters')  # TODO: implement number of clusters
     parser.add_argument('-i', '--items', type=int, help='Number of items')  # TODO: implement number of items
-    parser.add_argument('-e', '--exam', type=int, help='Exam year')  # TODO: implement exam years
     parser.add_argument('-s', '--seed', type=int, help='Random seed')
     parser.add_argument('-r', '--round', type=int, help='Round precision')  # TODO: implement round precision
     parser.add_argument('-f', '--file', type=str, help='File with data')  # TODO: implement file with data
@@ -58,15 +57,14 @@ def parse_arguments():
     args = parser.parse_args()
 
     DEBUG = args.debug
-
-    if DEBUG:
-        if args.clusters is not None:
-            print(f"Number of clusters (-c): {args.clusters}")
-        if args.items is not None:
-            print(f"Number of items (-i): {args.items}")
+    if args.round is not None:
+        ROUND_PRECISION = args.round
 
     if args.seed is not None:
         np.random.seed(args.seed)
+
+    if DEBUG:
+        utils.print_parameter_usage(args)
 
     return args
 
@@ -75,8 +73,12 @@ def read_data(file):
     if DEBUG:
         utils.dprint(f"Reading data from {file}")
 
-    with open(file, 'r') as f:
-        lines = f.read().split('\n')
+    try:
+        with open(file, 'r') as f:
+            lines = f.read().split('\n')
+    except:
+        with open(f"../data/{file}", 'r') as f:
+            lines = f.read().split('\n')
 
     items = []
     clusters = []
