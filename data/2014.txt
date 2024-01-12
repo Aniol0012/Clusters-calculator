@@ -1,0 +1,20 @@
+// separate every part of the file by '#'
+// the structure of the file is -> # items # clusters # iterations
+
+# items
+2, 10
+2, 5
+8, 4
+5, 8
+7, 5
+6, 4
+1, 2
+4, 9
+
+# clusters
+2, 10
+5, 8
+1, 2
+
+# iterations
+4

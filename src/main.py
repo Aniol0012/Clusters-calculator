@@ -1,7 +1,6 @@
 import numpy as np
 import argparse
-
-from data import exams_data
+import utils
 
 ROUND_PRECISION = 4
 DEBUG = False
@@ -52,19 +51,17 @@ def parse_arguments():
     parser.add_argument('-s', '--seed', type=int, help='Random seed')
     parser.add_argument('-r', '--round', type=int, help='Round precision')  # TODO: implement round precision
     parser.add_argument('-f', '--file', type=str, help='File with data')  # TODO: implement file with data
-    parser.add_argument('-n', '--n-iterations', type=int,
-                        help='Number of iterations')  # TODO: implement number of iterations
     parser.add_argument('-p', '--plot', action='store_true', help='Plot clusters')  # TODO: implement plot clusters
     parser.add_argument('-d', '--debug', action='store_true', help='Debug mode')
     args = parser.parse_args()
 
     DEBUG = args.debug
 
-    iterations = args.n_iterations
-
     if DEBUG:
-        print(f"Number of clusters: {args.clusters}")
-        print(f"Number of points: {args.points}")
+        if args.clusters is not None:
+            print(f"Number of clusters (-c): {args.clusters}")
+        if args.items is not None:
+            print(f"Number of items (-i): {args.items}")
 
     if args.seed is not None:
         np.random.seed(args.seed)
@@ -73,6 +70,10 @@ def parse_arguments():
 
 
 def read_data(file):
+    if DEBUG:
+        utils.dprint(f"Reading data from {file}")
+        print(f"Reading data from {file}")
+
     with open(file, 'r') as f:
         lines = f.read().split('\n')
 
@@ -105,7 +106,7 @@ def main():
     if args.file is not None:
         file = args.file
     else:
-        file = 'data/2018.txt'
+        file = '../data/2018.txt'
 
     items, clusters, iterations = read_data(file)
 
