@@ -44,7 +44,7 @@ def update_clusters(items, assignments, clusters):
     return new_clusters
 
 
-def main():
+def parse_arguments():
     parser = argparse.ArgumentParser(description="Clusters Calculator")
     parser.add_argument('-c', '--clusters', type=int, help='Number of clusters')  # TODO: implement number of clusters
     parser.add_argument('-i', '--items', type=int, help='Number of items')  # TODO: implement number of items
@@ -61,14 +61,58 @@ def main():
     DEBUG = args.debug
 
     iterations = args.n_iterations
-    if iterations is None:
-        iterations = 1
 
     if DEBUG:
         print(f"Number of clusters: {args.clusters}")
         print(f"Number of points: {args.points}")
 
-    items, clusters, iterations = exams_data.exam_2018()
+    if args.seed is not None:
+        np.random.seed(args.seed)
+
+    return args
+
+
+def read_data(file):
+    with open(file, 'r') as f:
+        lines = f.read().split('\n')
+
+    items = []
+    clusters = []
+    iterations = 1
+    section = None
+
+    for line in lines:
+        if line == '' or line.startswith('//'):
+            continue
+        elif line.startswith('#'):
+            section = line[1:].strip()
+        elif section == 'items':
+            items.append([int(x) for x in line.split(',')])
+        elif section == 'clusters':
+            clusters.append([int(x) for x in line.split(',')])
+        elif section == 'iterations':
+            iterations = int(line)
+
+    if items == [] or clusters == []:
+        raise Exception("Items or clusters not found in file, please check the format in the README.md file")
+
+    return items, clusters, iterations
+
+
+def main():
+    args = parse_arguments()
+
+    if args.file is not None:
+        file = args.file
+    else:
+        file = 'data/2018.txt'
+
+    items, clusters, iterations = read_data(file)
+
+    print(f"Items: {items}")
+    print(f"Clusters: {clusters}")
+    print(f"Iterations: {iterations}")
+    print("────────────────────────────────────────────────────────────")
 
     for i in range(iterations):
         print(f"Iteration {i + 1}:")
