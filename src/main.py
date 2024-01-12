@@ -44,6 +44,8 @@ def update_clusters(items, assignments, clusters):
 
 
 def parse_arguments():
+    global DEBUG
+
     parser = argparse.ArgumentParser(description="Clusters Calculator")
     parser.add_argument('-c', '--clusters', type=int, help='Number of clusters')  # TODO: implement number of clusters
     parser.add_argument('-i', '--items', type=int, help='Number of items')  # TODO: implement number of items
@@ -72,7 +74,6 @@ def parse_arguments():
 def read_data(file):
     if DEBUG:
         utils.dprint(f"Reading data from {file}")
-        print(f"Reading data from {file}")
 
     with open(file, 'r') as f:
         lines = f.read().split('\n')
