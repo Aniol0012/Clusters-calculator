@@ -1,6 +1,9 @@
 # Clusters-calculator
 Simple script made to automatize the centroid calculator for K-Means algorithm using euclidean distance.
 
+> [!IMPORTANT]
+> This scripts is heavily related to this [repository](https://github.com/Aniol0012/IA-Practica2).
+
 # Requirements
 ```shell
 $ pipx install -r requirements.txt
