@@ -111,10 +111,11 @@ def main():
 
     items, clusters, iterations = read_data(file)
 
+    utils.print_ln()
     print(f"Items: {items}")
     print(f"Clusters: {clusters}")
     print(f"Iterations: {iterations}")
-    print("────────────────────────────────────────────────────────────")
+    utils.print_ln()
 
     for i in range(iterations):
         print(f"Iteration {i + 1}:")
