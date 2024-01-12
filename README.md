@@ -5,7 +5,7 @@ Simple script made to automatize the centroid calculator for K-Means algorithm u
 ```shell
 $ pipx install -r requirements.txt
 ```
-[!NOTE]
+> [!NOTE]
 > You can use pip instead of pipx, but I recommend using pipx to avoid conflicts with other projects
 
 ## How to use
