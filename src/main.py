@@ -37,9 +37,9 @@ def update_clusters(items, assignments, clusters):
         assigned_items = [items[j] for j, a in enumerate(assignments) if a == i]
         if assigned_items:
             new_cluster = np.mean(assigned_items, axis=0).tolist()
-            new_clusters.append(new_cluster)
+            new_clusters.append([round(coord, ROUND_PRECISION) for coord in new_cluster])
         else:
-            new_clusters.append(round(clusters[i], ROUND_PRECISION))
+            new_clusters.append([round(coord, ROUND_PRECISION) for coord in clusters[i]])
     return new_clusters
 
 
