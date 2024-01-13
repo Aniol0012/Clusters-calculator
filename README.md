@@ -17,13 +17,18 @@ $ pipx install -r requirements.txt
 ## How to use
 
 1. Clone the repository
-2. Run the script
-3. Enter the number of clusters
-4. Enter the number of points
-5. Enter the points
-6. Enter the initial centroids
-7. Wait for the result
-8. Enjoy!
+1. Install the requirements
+1. Check the help panel of the script
+
+````shell
+$ python3 main.py -h
+````
+
+### Example
+
+```shell
+$ python3 main.py ../data/2018.txt -r 3 -d -p  
+```
 
 ## Data file format
 
@@ -49,24 +54,6 @@ Note that the use of the '//' symbol can be used to add comments to the file.
 > [!TIP]
 > You can use the [default file](data/2018.txt) as an example
 
-## Example
-
-```shell
-$ python3 main.py
-Enter the number of clusters: 2
-Enter the number of points: 4
-Enter the points:
-1 1
-1 2
-2 1
-2 2
-Enter the initial centroids:
-1 1
-2 2
-Centroids:
-1.5 1.5
-1.5 1.5
-```
 
 ## License
 
