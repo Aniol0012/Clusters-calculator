@@ -13,7 +13,7 @@ In case of equal distances, the script will choose the centroid with the lowest 
 ## How to use
 
 1. Clone the repository
-1. Install the requirements
+2. Install the requirements
 
 ```shell
 $ pipx install -r requirements.txt
@@ -22,7 +22,7 @@ $ pipx install -r requirements.txt
 > [!NOTE]
 > You can use pip instead of pipx, but I recommend using pipx to avoid conflicts with other projects
 
-1. Check the help panel of the script
+3. Check the help panel of the script
 
 ````shell
 $ python3 main.py -h
@@ -57,7 +57,6 @@ Note that the use of the `//` symbol can be used to add comments to the file.
 
 > [!TIP]
 > You can use the [default file](data/2018.txt) as an example
-
 
 ## License
 
