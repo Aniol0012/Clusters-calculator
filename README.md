@@ -1,9 +1,10 @@
 # Clusters-calculator
 
 Simple script made to automatize the centroid calculator for K-Means algorithm using euclidean distance.
+In case of equal distances, the script will choose the centroid with the lowest index.
 
 > [!IMPORTANT]
-> This scripts is heavily related to this [repository](https://github.com/Aniol0012/IA-Practica2)
+> This script is heavily related to this [repository](https://github.com/Aniol0012/IA-Practica2)
 
 ## Requirements
 
