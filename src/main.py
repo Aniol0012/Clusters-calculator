@@ -39,7 +39,7 @@ def update_clusters(items, assignments, clusters):
             new_cluster = np.mean(assigned_items, axis=0).tolist()
             new_clusters.append(new_cluster)
         else:
-            new_clusters.append(clusters[i])
+            new_clusters.append(round(clusters[i], ROUND_PRECISION))
     return new_clusters
 
 
@@ -129,10 +129,10 @@ def main():
             print(f"Item {index} distances: {item_dist} -> assigned to K{assignment + 1}")
 
         print("\nNew cluster positions:")
-        for cluster, new_cluster_position in enumerate(clusters):
-            print(f"K{cluster + 1}: {new_cluster_position}")
+        for cluster, new_cluster_position in enumerate(clusters, 1):
+            print(f"K{cluster}: {new_cluster_position}")
 
-        print("────────────────────────────────────────────────────────────")
+        utils.print_ln()
 
 
 if __name__ == "__main__":
