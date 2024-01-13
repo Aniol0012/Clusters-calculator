@@ -6,7 +6,14 @@ In case of equal distances, the script will choose the centroid with the lowest 
 > [!IMPORTANT]
 > This script is heavily related to this [repository](https://github.com/Aniol0012/IA-Practica2)
 
-## Requirements
+## Plot preview
+
+![example](https://github.com/Aniol0012/Clusters-calculator/assets/53788631/9e404011-7cf9-4d29-9531-e7a19b4034ba)
+
+## How to use
+
+1. Clone the repository
+1. Install the requirements
 
 ```shell
 $ pipx install -r requirements.txt
@@ -15,10 +22,6 @@ $ pipx install -r requirements.txt
 > [!NOTE]
 > You can use pip instead of pipx, but I recommend using pipx to avoid conflicts with other projects
 
-## How to use
-
-1. Clone the repository
-1. Install the requirements
 1. Check the help panel of the script
 
 ````shell
