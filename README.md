@@ -3,9 +3,9 @@
 Simple script made to automatize the centroid calculator for K-Means algorithm using euclidean distance.
 
 > [!IMPORTANT]
-> This scripts is heavily related to this [repository](https://github.com/Aniol0012/IA-Practica2).
+> This scripts is heavily related to this [repository](https://github.com/Aniol0012/IA-Practica2)
 
-# Requirements
+## Requirements
 
 ```shell
 $ pipx install -r requirements.txt
@@ -49,7 +49,7 @@ The data file must be a text file with the following format:
 10
 ```
 
-Note that the use of the '//' symbol can be used to add comments to the file.
+Note that the use of the `//` symbol can be used to add comments to the file.
 
 > [!TIP]
 > You can use the [default file](data/2018.txt) as an example
