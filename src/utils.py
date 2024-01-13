@@ -1,4 +1,4 @@
-import argparse
+import matplotlib.pyplot as plt
 
 
 def dprint(string):
@@ -21,3 +21,22 @@ def print_parameter_usage(args):
     if args.file is not None:
         dprint(f"Data file (-f): {args.file}")
     print_ln()
+
+
+def plot_clusters(items, assignments, clusters, iteration):
+    colors = ['r', 'g', 'b', 'c', 'm', 'y', 'k']
+
+    for i, cluster in enumerate(clusters):
+        cluster_items = [items[j] for j, a in enumerate(assignments) if a == i]
+
+        x_items, y_items = zip(*cluster_items)
+        plt.scatter(x_items, y_items, c=colors[i % len(colors)], marker='o', label=f'Cluster {i + 1}')
+
+        plt.scatter(cluster[0], cluster[1], c=colors[i % len(colors)], marker='x', s=100)
+
+    plt.title(f'Cluster Plot iteration {iteration}')
+    plt.xlabel('X Coordinate')
+    plt.ylabel('Y Coordinate')
+    plt.legend()
+    plt.grid(True)
+    plt.show()

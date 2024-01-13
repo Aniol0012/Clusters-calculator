@@ -47,12 +47,12 @@ def parse_arguments():
     global DEBUG, ROUND_PRECISION
 
     parser = argparse.ArgumentParser(description="Clusters Calculator")
-    parser.add_argument('-c', '--clusters', type=int, help='Number of clusters')  # TODO: implement number of clusters
-    parser.add_argument('-i', '--items', type=int, help='Number of items')  # TODO: implement number of items
+    parser.add_argument('-c', '--clusters', type=int, help='Number of clusters')
+    parser.add_argument('-i', '--items', type=int, help='Number of items')
     parser.add_argument('-s', '--seed', type=int, help='Random seed')
-    parser.add_argument('-r', '--round', type=int, help='Round precision')  # TODO: implement round precision
-    parser.add_argument('-f', '--file', type=str, help='File with data')  # TODO: implement file with data
-    parser.add_argument('-p', '--plot', action='store_true', help='Plot clusters')  # TODO: implement plot clusters
+    parser.add_argument('-r', '--round', type=int, help='Round precision')
+    parser.add_argument('-f', '--file', type=str, help='File with data')
+    parser.add_argument('-p', '--plot', action='store_true', help='Plot clusters')
     parser.add_argument('-d', '--debug', action='store_true', help='Debug mode')
     args = parser.parse_args()
 
@@ -133,6 +133,9 @@ def main():
             print(f"K{cluster}: {new_cluster_position}")
 
         utils.print_ln()
+
+        if args.plot:
+            utils.plot_clusters(items, assignments, clusters, i + 1)
 
 
 if __name__ == "__main__":
