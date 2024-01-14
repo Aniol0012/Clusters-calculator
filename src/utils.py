@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+import numpy as np
 
 
 def dprint(string):
@@ -40,3 +41,28 @@ def plot_clusters(items, assignments, clusters, iteration):
     plt.legend()
     plt.grid(True)
     plt.show()
+
+
+def add_txt_extension(file):
+    if not file.endswith('.txt'):
+        file += '.txt'
+    return file
+
+
+def generate_random_file(file):
+    clusters = np.random.randint(1, 100)
+    items = np.random.randint(1, 100)
+    iterations = np.random.randint(1, 100)
+
+    if '../data/' is not None:
+        file = '../data/' + file
+
+    with open(file, 'w') as f:
+        f.write('#items\n')
+        for i in range(items):
+            f.write(f'{np.random.randint(0, 100)}, {np.random.randint(0, 100)}\n')
+        f.write('\n#clusters\n')
+        for i in range(clusters):
+            f.write(f'{np.random.randint(0, 100)}, {np.random.randint(0, 100)}\n')
+        f.write('\n#iterations\n')
+        f.write(f'{iterations}\n')

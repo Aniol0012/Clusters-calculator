@@ -48,11 +48,13 @@ def parse_arguments():
     global DEBUG, ROUND_PRECISION
 
     parser = argparse.ArgumentParser(description="Clusters Calculator")
-    parser.add_argument('-c', '--clusters', type=int, help='Number of clusters')
-    parser.add_argument('-i', '--items', type=int, help='Number of items')
+    parser.add_argument('-c', '--clusters', type=int,
+                        help='Number of clusters')  # TODO: Make it boolean to show only clusters
+    parser.add_argument('-i', '--items', type=int, help='Number of items')  # TODO: Make it boolean to show only items
     parser.add_argument('-s', '--seed', type=int, help='Random seed')
     parser.add_argument('-r', '--round', type=int, help='Round precision')
     parser.add_argument('-f', '--file', type=str, help='File with data')
+    parser.add_argument('-n', '--new_random_file', type=str, help='Generate new random file')
     parser.add_argument('-p', '--plot', action='store_true', help='Plot clusters')
     parser.add_argument('-d', '--debug', action='store_true', help='Debug mode')
     args = parser.parse_args()
@@ -107,10 +109,14 @@ def read_data(file):
 def main():
     args = parse_arguments()
 
-    if args.file is not None:
-        file = args.file
+    # The -f parameter overwrites -n
+    if args.new_random_file is not None:
+        file = utils.add_txt_extension(args.new_random_file)
+        utils.generate_random_file(file)
+    elif args.file is not None:
+        file = utils.add_txt_extension(args.file)
     else:
-        file = config.DEFAULT_FILE
+        file = utils.add_txt_extension(config.DEFAULT_FILE)
 
     items, clusters, iterations = read_data(file)
 
