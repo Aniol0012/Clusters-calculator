@@ -6,6 +6,12 @@ __pycache__/
 # JetBrains
 .idea/*
 
+*.txt
+!data/2014.txt
+!data/2016.txt
+!data/2018.txt
+
+
 # C extensions
 *.so
 
