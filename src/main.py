@@ -1,9 +1,10 @@
 import numpy as np
 import argparse
 import utils
+import config
 
-ROUND_PRECISION = 4
-DEBUG = False
+ROUND_PRECISION = config.DEFAULT_ROUND_PRECISION
+DEBUG = config.DEFAULT_DEBUG
 
 
 def euclidean_distance(point1, point2):
@@ -76,7 +77,7 @@ def read_data(file):
     try:
         with open(file, 'r') as f:
             lines = f.read().split('\n')
-    except:
+    except FileNotFoundError:
         with open(f"../data/{file}", 'r') as f:
             lines = f.read().split('\n')
 
@@ -109,7 +110,7 @@ def main():
     if args.file is not None:
         file = args.file
     else:
-        file = '../data/2018.txt'
+        file = config.DEFAULT_FILE
 
     items, clusters, iterations = read_data(file)
 
