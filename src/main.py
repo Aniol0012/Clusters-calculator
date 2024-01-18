@@ -130,6 +130,7 @@ def main():
         iterations = args.iterations
 
     utils.print_ln()
+    print(f"Reading data from {file}")
     print(f"Items: {items}")
     print(f"Clusters: {clusters}")
     print(f"Iterations: {iterations}")
