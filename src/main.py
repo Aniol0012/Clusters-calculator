@@ -48,9 +48,9 @@ def parse_arguments():
     global DEBUG, ROUND_PRECISION
 
     parser = argparse.ArgumentParser(description="Clusters Calculator")
-    parser.add_argument('-c', '--clusters', type=int,
-                        help='Number of clusters')  # TODO: Make it boolean to show only clusters
-    parser.add_argument('-i', '--items', type=int, help='Number of items')  # TODO: Make it boolean to show only items
+    parser.add_argument('-c', '--clusters', type=int, help='Number of clusters')
+    parser.add_argument('-i', '--items', type=int, help='Number of items')
+    parser.add_argument('-t', '--iterations', type=int, help='Number of iterations')
     parser.add_argument('-s', '--seed', type=int, help='Random seed')
     parser.add_argument('-r', '--round', type=int, help='Round precision')
     parser.add_argument('-f', '--file', type=str, help='File with data')
@@ -119,6 +119,15 @@ def main():
         file = utils.add_txt_extension(config.DEFAULT_FILE)
 
     items, clusters, iterations = read_data(file)
+
+    if args.clusters is not None:
+        clusters = utils.get_coords(args.clusters, "cluster")
+
+    if args.items is not None:
+        items = utils.get_coords(args.items, "item")
+
+    if args.iterations is not None:
+        iterations = args.iterations
 
     utils.print_ln()
     print(f"Items: {items}")

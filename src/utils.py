@@ -10,7 +10,25 @@ def print_ln(length=60):
     print("─" * length)
 
 
-def print_parameter_usage(args):
+def get_coords(n_clusters: int, name: str) -> list:
+    coords = []
+
+    for i in range(n_clusters):
+        while True:
+            try:
+                coord = input(f"Coordinate of {name} {i + 1}: ").strip()
+                x = int(coord.split(',')[0].strip())
+                y = int(coord.split(',')[1].strip())
+                break
+            except ValueError:
+                print("Please enter a valid string (example: 4, 2)")
+
+        coords.append([x, y])
+
+    return coords
+
+
+def print_parameter_usage(args) -> None:
     if args.clusters is not None:
         dprint(f"Number of clusters (-c): {args.clusters}")
     if args.items is not None:
@@ -50,18 +68,18 @@ def plot_clusters(items, assignments, clusters, iteration):
         print("No clusters to plot")
 
 
-def add_txt_extension(file):
+def add_txt_extension(file: str) -> str:
     if not file.endswith('.txt'):
         file += '.txt'
     return file
 
 
-def generate_random_file(file):
+def generate_random_file(file:str) -> None:
     clusters = np.random.randint(1, 100)
     items = np.random.randint(1, 100)
     iterations = np.random.randint(1, 100)
 
-    if '../data/' is not None:
+    if '../data/' != None:
         file = '../data/' + file
 
     with open(file, 'w') as f:
